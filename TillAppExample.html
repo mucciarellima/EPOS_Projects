@@ -1,0 +1,47 @@
+<html>
+<head>
+    <link href="https://www.eposnowhq.com/Styles/BackOffice/backoffice2.css" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://www.eposnowhq.com/Scripts/App/EposNowJSApi.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">EposnowAPI.setAccessToken(token)</script>
+    <title>Marco's Test</title>
+    <script type="text/template" id="tpl-customers">
+        <div>
+            <table class="Grid" style="max-width:800px;margin:0 auto;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Forename</th>
+                        <th>Surname</th>
+                        <th>Business Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% _.each( target, function(customer) {%>
+                    <tr>
+                        <td><%= customer.CustomerID %></td>
+                        <td><%= customer.Title %></td>
+                        <td><%= customer.Forename %></td>
+                        <td><%= customer.Surname %></td>
+                        <td><%= customer.BusinessName == undefined ? "" : customer.BusinessName %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </script>
+</head>
+<body>
+    <br />
+    <label for="customerName">Customer Surname:</label>
+    <input type="text" id="customerName">
+    <button class="toolButtonStyle" onclick="searchCustomers();">Search</button>
+    <hr />
+    <div id="searchResult">
+    </div>
+</body>
+</html>
